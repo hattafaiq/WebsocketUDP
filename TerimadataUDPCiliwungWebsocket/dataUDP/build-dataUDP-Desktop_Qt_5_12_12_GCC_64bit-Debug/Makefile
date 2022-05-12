@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = dataUDP1.0.0
-DISTDIR = /home/fh/Documents/DBE/bismillah/kombinasiUDPwebsoket/dataUDP/build-dataUDP-Desktop_Qt_5_12_12_GCC_64bit-Debug/.tmp/dataUDP1.0.0
+DISTDIR = /home/fh/Documents/DBE/bismillah/TerimadataUDPCiliwungWebsocket/dataUDP/build-dataUDP-Desktop_Qt_5_12_12_GCC_64bit-Debug/.tmp/dataUDP1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/fh/Qt5.12.12/5.12.12/gcc_64/lib
 LIBS          = $(SUBLIBS) /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Network.so /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Core.so -lpthread   
@@ -771,9 +771,12 @@ moc_udp.cpp: ../dataUDP/udp.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QTimer \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtimer.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDate \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		moc_predefs.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/fh/Documents/DBE/bismillah/kombinasiUDPwebsoket/dataUDP/build-dataUDP-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/fh/Documents/DBE/bismillah/kombinasiUDPwebsoket/dataUDP/dataUDP -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../dataUDP/udp.h -o moc_udp.cpp
+	/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/fh/Documents/DBE/bismillah/TerimadataUDPCiliwungWebsocket/dataUDP/build-dataUDP-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/fh/Documents/DBE/bismillah/TerimadataUDPCiliwungWebsocket/dataUDP/dataUDP -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../dataUDP/udp.h -o moc_udp.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -865,7 +868,10 @@ main.o: ../dataUDP/main.cpp /home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QCo
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QTimer \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtimer.h \
-		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDate \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../dataUDP/main.cpp
 
 udp.o: ../dataUDP/udp.cpp ../dataUDP/udp.h \
@@ -941,7 +947,10 @@ udp.o: ../dataUDP/udp.cpp ../dataUDP/udp.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QTimer \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtimer.h \
-		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDate \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o udp.o ../dataUDP/udp.cpp
 
 moc_udp.o: moc_udp.cpp 

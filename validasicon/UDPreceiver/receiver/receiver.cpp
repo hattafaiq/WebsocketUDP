@@ -3,7 +3,7 @@
 receiver::receiver(QObject *parent) : QObject(parent)
 {
     socket = new QUdpSocket(this);
-    socket->bind(QHostAddress::LocalHost, 1111);
+    socket->bind(QHostAddress("192.168.100.184"), 1111);
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 }
 

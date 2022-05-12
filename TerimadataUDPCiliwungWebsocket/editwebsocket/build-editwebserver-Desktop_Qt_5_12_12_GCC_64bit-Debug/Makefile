@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = editwebserver1.0.0
-DISTDIR = /home/fh/Documents/DBE/bismillah/kombinasiUDPwebsoket/editwebsocket/build-editwebserver-Desktop_Qt_5_12_12_GCC_64bit-Debug/.tmp/editwebserver1.0.0
+DISTDIR = /home/fh/Documents/DBE/bismillah/TerimadataUDPCiliwungWebsocket/editwebsocket/build-editwebserver-Desktop_Qt_5_12_12_GCC_64bit-Debug/.tmp/editwebserver1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/fh/Qt5.12.12/5.12.12/gcc_64/lib
 LIBS          = $(SUBLIBS) /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5WebSockets.so /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Network.so /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Core.so -lpthread   
@@ -231,7 +231,6 @@ DIST          = /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_pre.prf 
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf \
-		../editwebserver/.qmake.stash \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf \
@@ -436,7 +435,6 @@ Makefile: ../editwebserver/editwebserver.pro /home/fh/Qt5.12.12/5.12.12/gcc_64/m
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf \
@@ -630,7 +628,6 @@ Makefile: ../editwebserver/editwebserver.pro /home/fh/Qt5.12.12/5.12.12/gcc_64/m
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf:
@@ -802,9 +799,10 @@ moc_editserver.cpp: ../editwebserver/editserver.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QUdpSocket \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qudpsocket.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDate \
 		moc_predefs.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/fh/Documents/DBE/bismillah/kombinasiUDPwebsoket/editwebsocket/build-editwebserver-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/fh/Documents/DBE/bismillah/kombinasiUDPwebsoket/editwebsocket/editwebserver -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtWebSockets -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../editwebserver/editserver.h -o moc_editserver.cpp
+	/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/fh/Documents/DBE/bismillah/TerimadataUDPCiliwungWebsocket/editwebsocket/build-editwebserver-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/fh/Documents/DBE/bismillah/TerimadataUDPCiliwungWebsocket/editwebsocket/editwebserver -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtWebSockets -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../editwebserver/editserver.h -o moc_editserver.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -922,6 +920,7 @@ editserver.o: ../editwebserver/editserver.cpp ../editwebserver/editserver.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QUdpSocket \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qudpsocket.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDate \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtWebSockets/QWebSocketServer \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtWebSockets/qwebsocketserver.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostAddress \
@@ -1032,7 +1031,8 @@ main.o: ../editwebserver/main.cpp /home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCo
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtimer.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QUdpSocket \
-		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qudpsocket.h
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qudpsocket.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDate
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../editwebserver/main.cpp
 
 moc_editserver.o: moc_editserver.cpp 

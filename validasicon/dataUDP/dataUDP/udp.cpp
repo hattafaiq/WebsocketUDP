@@ -3,23 +3,19 @@
 udp::udp(QObject *parent) : QObject(parent)
 {
     socket = new QUdpSocket(this);
-    socket->bind(QHostAddress::LocalHost, 1111);
+    socket->bind(QHostAddress("192.168.100.184"), 1111);
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 }
 
 void udp::readyRead()
-{   int i;
-    QByteArray Data;
-    Data.append("data masuk");
-    socket->writeDatagram(Data, QHostAddress::LocalHost, 1111);
+{
+    int i;
     i++;
-    if(!socket->writeDatagram(Data, QHostAddress::LocalHost, 1111))
-    {
-        qDebug()<<"gagal terkirim";
-    }
-    else{
-        qDebug()<<"terkirim: "<<Data << " ke :" <<i;
-    }
+    QString printable = QStringLiteral("data %1").arg(i);
+    QByteArray Data;
+    Data.append(printable);
+    socket->writeDatagram(Data, QHostAddress("192.168.100.184"), 1111);
+    qDebug()<<"terkirim: "<<Data << " ke :" <<i;
 }
 
 void udp::init_time()

@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../receiver -I. -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../receiver -I. -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/fh/Qt5.12.12/5.12.12/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,10 +37,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = receiver1.0.0
-DISTDIR = /home/fh/Documents/DBE/bismillah/kombinasiUDPwebsoket/UDPreceiver/build-receiver-Desktop_Qt_5_12_12_GCC_64bit-Debug/.tmp/receiver1.0.0
+DISTDIR = /home/fh/Documents/DBE/bismillah/TerimadataUDPCiliwungWebsocket/UDPreceiver/build-receiver-Desktop_Qt_5_12_12_GCC_64bit-Debug/.tmp/receiver1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/fh/Qt5.12.12/5.12.12/gcc_64/lib
-LIBS          = $(SUBLIBS) /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Network.so /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Core.so -lpthread   
+LIBS          = $(SUBLIBS) /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Network.so /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Sql.so /home/fh/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Core.so -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -231,6 +231,7 @@ DIST          = /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_pre.prf 
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf \
+		../receiver/.qmake.stash \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf \
@@ -248,7 +249,8 @@ DIST          = /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_pre.prf 
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exceptions.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/yacc.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/lex.prf \
-		../receiver/receiver.pro ../receiver/receiver.h ../receiver/main.cpp \
+		../receiver/receiver.pro ../receiver/receiver.h \
+		../receiver/setup.h ../receiver/main.cpp \
 		../receiver/receiver.cpp
 QMAKE_TARGET  = receiver
 DESTDIR       = 
@@ -435,6 +437,7 @@ Makefile: ../receiver/receiver.pro /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/lin
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf \
@@ -628,6 +631,7 @@ Makefile: ../receiver/receiver.pro /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/lin
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf:
 /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf:
@@ -661,7 +665,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../receiver/receiver.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../receiver/receiver.h ../receiver/setup.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../receiver/main.cpp ../receiver/receiver.cpp $(DISTDIR)/
 
 
@@ -773,7 +777,7 @@ moc_receiver.cpp: ../receiver/receiver.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
 		moc_predefs.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/fh/Documents/DBE/bismillah/kombinasiUDPwebsoket/UDPreceiver/build-receiver-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/fh/Documents/DBE/bismillah/kombinasiUDPwebsoket/UDPreceiver/receiver -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../receiver/receiver.h -o moc_receiver.cpp
+	/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/fh/Documents/DBE/bismillah/TerimadataUDPCiliwungWebsocket/UDPreceiver/build-receiver-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/fh/Documents/DBE/bismillah/TerimadataUDPCiliwungWebsocket/UDPreceiver/receiver -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../receiver/receiver.h -o moc_receiver.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -941,7 +945,14 @@ receiver.o: ../receiver/receiver.cpp ../receiver/receiver.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/QTimer \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtimer.h \
-		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
+		../receiver/setup.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtSql/QSqlQuery \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtSql/qsqlquery.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtSql/qtsqlglobal.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtSql/qtsql-config.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtSql/qsqldatabase.h \
+		/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtSql/QSqlDatabase
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o receiver.o ../receiver/receiver.cpp
 
 moc_receiver.o: moc_receiver.cpp 

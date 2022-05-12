@@ -4,8 +4,8 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    receiver terima;
-    terima.readyRead();
+    receiver waktu;
+    waktu.init_time();
 
     return a.exec();
 }

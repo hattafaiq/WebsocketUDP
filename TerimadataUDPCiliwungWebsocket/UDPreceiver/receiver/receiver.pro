@@ -1,5 +1,7 @@
 QT -= gui
-QT += core network
+QT += core
+QT += network
+QT += sql
 
 CONFIG += c++11 console
 CONFIG -= app_bundle
@@ -18,4 +20,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    receiver.h
+    receiver.h \
+    setup.h

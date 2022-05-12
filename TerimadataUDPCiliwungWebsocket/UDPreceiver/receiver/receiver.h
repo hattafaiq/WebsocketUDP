@@ -12,11 +12,16 @@ public:
 signals:
 
 public slots:
-    void readyRead();
+    void masuk();
+    void init_time();
+    void req_UDP();
+    void refresh_plot();
+
 
 private:
     QUdpSocket *socket;
     QTimer *timer;
+    int tim_count;
 };
 
 #endif // RECEIVER_H
