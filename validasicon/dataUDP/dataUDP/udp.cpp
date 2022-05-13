@@ -3,7 +3,7 @@
 udp::udp(QObject *parent) : QObject(parent)
 {
     socket = new QUdpSocket(this);
-    socket->bind(QHostAddress("192.168.100.184"), 1111);
+    socket->bind(QHostAddress::Any, 5008);
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 }
 
@@ -14,7 +14,7 @@ void udp::readyRead()
     QString printable = QStringLiteral("data %1").arg(i);
     QByteArray Data;
     Data.append(printable);
-    socket->writeDatagram(Data, QHostAddress("192.168.100.184"), 1111);
+    socket->writeDatagram(Data, QHostAddress::LocalHost, 5007);
     qDebug()<<"terkirim: "<<Data << " ke :" <<i;
 }
 
