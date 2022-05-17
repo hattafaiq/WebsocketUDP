@@ -7,8 +7,8 @@ EchoClient::EchoClient(const QUrl &url, bool debug, QObject *parent) :
     QObject(parent),m_url(url),m_debug(debug)
 {
     qDebug() << "WebSocket server:" << url;
-    connect(&m_webSocket, SIGNAL(connected()), this, SLOT(onConnected()));
-    connect(&m_webSocket, SIGNAL(disconnected()), this, SLOT(closed()));
+    connect(&m_webSocket, &QWebSocket::connected, this, &EchoClient::onConnected);
+    connect(&m_webSocket, &QWebSocket::disconnected, this, &EchoClient::closed);
     m_webSocket.open(QUrl(url));
     //waktu
     jam = new QTimer(this);
@@ -28,7 +28,7 @@ void EchoClient::onConnected()
 {
     qDebug() << "____--WebSocket terhubung--____";
     //connect(&m_webSocket, &QWebSocket::textMessageReceived,this, &EchoClient::onTextMessageReceived);
-    connect(&m_webSocket, SIGNAL(binaryMessageReceived()),this, SLOT(onTextMessageReceived()));
+    connect(&m_webSocket, &QWebSocket::binaryMessageReceived,this, &EchoClient::onTextMessageReceived);
     QString qs = "aktif bro";
     QByteArray ba;
     ba += qs;

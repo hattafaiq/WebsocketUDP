@@ -31,7 +31,7 @@ private slots:
     void onNewConnection();
     void processMessage(QByteArray message);
     void socketDisconnected();
-    void showTime();
+    //void showTime();
 
 private:
     QUdpSocket *socket;
@@ -49,7 +49,6 @@ private:
     QString dateTimeText;
     QString time_text;
     //
-    //int count;
     //float isidatabaru;
 };
 #endif // DATA_H

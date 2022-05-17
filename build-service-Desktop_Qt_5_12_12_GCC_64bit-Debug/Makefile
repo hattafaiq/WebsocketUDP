@@ -231,7 +231,6 @@ DIST          = ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_pre.p
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf \
-		../service/.qmake.stash \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf \
@@ -437,7 +436,6 @@ Makefile: ../service/service.pro ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/li
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf \
@@ -631,7 +629,6 @@ Makefile: ../service/service.pro ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/li
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf:

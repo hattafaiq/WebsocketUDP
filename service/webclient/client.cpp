@@ -1,5 +1,6 @@
 #include "client.h"
 #include "datasetup.h"
+#include "QWebSocket"
 
 QT_USE_NAMESPACE
 
@@ -16,6 +17,7 @@ EchoClient::EchoClient(const QUrl &url, bool debug, QObject *parent) :
     jam->start();
     date = QDate::currentDate();
     dateTimeText = date.toString();
+    //count=0;
 }
 
 void EchoClient::showTime()
@@ -26,9 +28,11 @@ void EchoClient::showTime()
 
 void EchoClient::onConnected()
 {
-    qDebug() << "____--WebSocket terhubung--____";
     //connect(&m_webSocket, &QWebSocket::textMessageReceived,this, &EchoClient::onTextMessageReceived);
-    connect(&m_webSocket, SIGNAL(binaryMessageReceived()),this, SLOT(onTextMessageReceived()));
+    //connect(&m_webSocket, SIGNAL(binaryMessageReceived()),this, SLOT(onTextMessageReceived())); //tidak mau signal slot
+    connect(&m_webSocket, &QWebSocket::binaryMessageReceived,this, &EchoClient::onTextMessageReceived);
+    qDebug() << "____--WebSocket terhubung--____";
+
     QString qs = "aktif bro";
     QByteArray ba;
     ba += qs;
@@ -38,6 +42,7 @@ void EchoClient::onConnected()
 
 void EchoClient::onTextMessageReceived(QByteArray message)
 {
+    //count++;
     struct tt_req2 *p_req2;
     float *p_data;
     int i_kanal;
@@ -45,7 +50,7 @@ void EchoClient::onTextMessageReceived(QByteArray message)
     p_data = (float *) p_req2->buf;
     i_kanal = p_req2->cur_kanal;
     //qDebug() << "Pesan Diterima: " << message << time_text;
-    qDebug() << "client: " << i_kanal << time_text;
+    qDebug() << "client: " << i_kanal << time_text; //<< " " //<< count;
     //m_webSocket.close();
 }
 

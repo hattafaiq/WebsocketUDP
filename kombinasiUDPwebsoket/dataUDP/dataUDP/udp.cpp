@@ -38,5 +38,5 @@ void udp::init_time()
 {
         timer = new QTimer(this);
         QObject::connect(timer,SIGNAL(timeout()),this, SLOT(readyRead()));
-        timer->start(7521);
+        timer->start(500);
 }

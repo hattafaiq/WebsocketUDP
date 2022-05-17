@@ -4,23 +4,13 @@
 
 data::data(QObject *parent) : QObject(parent)
 {
-    //INIT_udp
     socket = new QUdpSocket(this);
     socket->bind(QHostAddress::Any, 5008);
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
-    //INIT_websocket
     m_pWebSocketServer = new QWebSocketServer(QStringLiteral("Chat Server"),QWebSocketServer::NonSecureMode,this);
     m_pWebSocketServer->listen(QHostAddress::Any, 1234);
     //qDebug() << "server standby pada: " << port; //1234
     connect(m_pWebSocketServer, SIGNAL(newConnection()),this, SLOT(onNewConnection()));
-    //INIT_waktu
-    jam = new QTimer(this);
-    connect(jam, SIGNAL(timeout()),this, SLOT(showTime()));
-    jam->start();
-    date = QDate::currentDate();
-    dateTimeText = date.toString();
-    //
-   // count=0;
 }
 
 void data::init_time()
@@ -38,12 +28,6 @@ void data::req_UDP()
     socket->writeDatagram(Data,QHostAddress("192.168.0.102"), 5006);
 }
 
-void data::showTime()
-{
-    QTime time = QTime::currentTime();
-    time_text = time.toString("hh:mm:ss:z");
-}
-
 void data::readyRead()
 {
     quint16 senderPort;
@@ -53,14 +37,13 @@ void data::readyRead()
     int i_kanal;
     while (socket->hasPendingDatagrams())
     {
-        //count++;
         datagram.resize(socket->pendingDatagramSize());
         socket->readDatagram(datagram.data(), datagram.size(), &sendera, &senderPort);
         p_req2 = (struct tt_req2 *) datagram.data();
         p_data = (float *) p_req2->buf;
         i_kanal = p_req2->cur_kanal;
         //qDebug() << "service : " << datagram;
-        qDebug() << "service : " << i_kanal << time_text; //<< " " << count;
+        qDebug() << "service : " << i_kanal;
 
 //        //qDebug() << "dari client: " << message;
         QWebSocket *pSender = qobject_cast<QWebSocket *>(sender());

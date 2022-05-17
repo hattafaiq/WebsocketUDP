@@ -15,12 +15,15 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void onConnected();
-    void onTextMessageReceived(QString message);
+    void onTextMessageReceived(QByteArray message);
 
 private:
     QWebSocket m_webSocket;
     QUrl m_url;
     bool m_debug;
+    struct tt_req2 *p_req2;
+    float *p_data;
+    int i_kanal;
 
 };
 

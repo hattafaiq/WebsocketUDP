@@ -5,12 +5,10 @@
 
 QT_USE_NAMESPACE
 
-ChatServer::ChatServer(quint16 port, QObject *parent) :
-    QObject(parent),m_pWebSocketServer(Q_NULLPTR),m_clients()
+ChatServer::ChatServer(QObject *parent) : QObject(parent)
 {
     m_pWebSocketServer = new QWebSocketServer(QStringLiteral("Chat Server"),QWebSocketServer::NonSecureMode,this);
-    m_pWebSocketServer->listen(QHostAddress::Any, port);
-    qDebug() << "Chat Server listening on port" << port;
+    m_pWebSocketServer->listen(QHostAddress::Any, 1111);
     connect(m_pWebSocketServer, &QWebSocketServer::newConnection,this, &ChatServer::onNewConnection);
 }
 
@@ -23,23 +21,16 @@ ChatServer::~ChatServer()
 void ChatServer::onNewConnection()
 {
     QWebSocket *pSocket = m_pWebSocketServer->nextPendingConnection();
-    connect(pSocket, &QWebSocket::textMessageReceived, this, &ChatServer::processMessage);
+    connect(pSocket, &QWebSocket::binaryMessageReceived, this, &ChatServer::processMessage);
     connect(pSocket, &QWebSocket::disconnected, this, &ChatServer::socketDisconnected);
-
     m_clients << pSocket;
 }
 
-void ChatServer::processMessage(QString message)
+void ChatServer::processMessage(QByteArray message)
 {
-    qDebug() << "pesan: " << message;
-    QWebSocket *pSender = qobject_cast<QWebSocket *>(sender());
-    Q_FOREACH (QWebSocket *pClient, m_clients)
-    {
-        if (pClient != pSender) //don't echo message back to sender
-        {
-            pClient->sendTextMessage(message);
-        }
-    }
+    i++;
+    QString DataAsString = QString(message);
+    qDebug() << "Message received:" << DataAsString << "ke- " <<i;
 }
 
 void ChatServer::socketDisconnected()

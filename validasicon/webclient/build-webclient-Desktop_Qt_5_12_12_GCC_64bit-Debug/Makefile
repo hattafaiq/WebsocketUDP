@@ -249,7 +249,8 @@ DIST          = /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_pre.prf 
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exceptions.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/yacc.prf \
 		/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/lex.prf \
-		../webclient/webclient.pro ../webclient/client.h ../webclient/client.cpp \
+		../webclient/webclient.pro ../webclient/client.h \
+		../webclient/setting.h ../webclient/client.cpp \
 		../webclient/main.cpp
 QMAKE_TARGET  = webclient
 DESTDIR       = 
@@ -664,7 +665,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../webclient/client.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../webclient/client.h ../webclient/setting.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../webclient/client.cpp ../webclient/main.cpp $(DISTDIR)/
 
 

@@ -16,7 +16,7 @@ Q_SIGNALS:
 private Q_SLOTS:
     void onConnected();
     void onTextMessageReceived(QString message);
-    void init_time();
+    //void init_time();
     void kirim();
 
 private:

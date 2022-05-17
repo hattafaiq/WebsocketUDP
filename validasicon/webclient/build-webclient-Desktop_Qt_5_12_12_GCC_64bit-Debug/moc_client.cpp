@@ -69,7 +69,7 @@ static const uint qt_meta_data_EchoClient[] = {
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    5,
+    QMetaType::Void, QMetaType::QByteArray,    5,
 
        0        // eod
 };
@@ -82,7 +82,7 @@ void EchoClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->closed(); break;
         case 1: _t->onConnected(); break;
-        case 2: _t->onTextMessageReceived((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 2: _t->onTextMessageReceived((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

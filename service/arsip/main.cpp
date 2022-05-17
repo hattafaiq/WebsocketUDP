@@ -1,10 +1,10 @@
-#include <QtCore/QCoreApplication>
-#include "editserver.h"
-
+#include <QCoreApplication>
+#include "data.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    ChatServer server(1234);
+    data masuk;
+    masuk.init_time();
 
     return a.exec();
 }

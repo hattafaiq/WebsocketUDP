@@ -14,13 +14,16 @@ class ChatServer : public QObject
 {
     Q_OBJECT
 public:
-    explicit ChatServer(quint16 port, QObject *parent = Q_NULLPTR);
+    explicit ChatServer(QObject *parent = Q_NULLPTR);
     virtual ~ChatServer();
 
 private Q_SLOTS:
     void onNewConnection();
-    void processMessage(QString message);
+    void processMessage(QByteArray message);
     void socketDisconnected();
+
+private:
+    int i;
 
 
 private:

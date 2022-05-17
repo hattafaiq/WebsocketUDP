@@ -10,37 +10,35 @@ EchoClient::EchoClient(const QUrl &url, bool debug, QObject *parent) :
     connect(&m_webSocket, &QWebSocket::connected, this, &EchoClient::onConnected);
     connect(&m_webSocket, &QWebSocket::disconnected, this, &EchoClient::closed);
     m_webSocket.open(QUrl(url));
-    init_time();
 }
-//! [constructor]
 
-//! [onConnected]
 void EchoClient::onConnected()
 {
     qDebug() << "WebSocket connected";
-    connect(&m_webSocket, &QWebSocket::textMessageReceived,this, &EchoClient::onTextMessageReceived);
-    //m_webSocket.sendTextMessage(QStringLiteral("aktif bro"));
+    connect(&m_webSocket, SIGNAL(binaryMessageReceived()),this, SLOT(kirim()));
 }
-//! [onConnected]
 
-//! [onTextMessageReceived]
 void EchoClient::onTextMessageReceived(QString message)
 {
     qDebug() << "Message received:" << message;
     //m_webSocket.close();
 }
 
-void EchoClient::init_time()
-{
-        timer = new QTimer(this);
-        QObject::connect(timer,SIGNAL(timeout()),this, SLOT(kirim()));
-        timer->start(50);
-}
-
 void EchoClient::kirim()
 {
-    int i;
-    i++;
-    QString printable = QStringLiteral("data %1").arg(i);
-    m_webSocket.sendTextMessage(printable);
+    QByteArray data;
+       QString qs = "String";
+       data += qs;
+    //QString printable = QStringLiteral("data %1").arg(i);
+    m_webSocket.sendBinaryMessage(data);
+    qDebug()<<"data " << data;
 }
+
+//void EchoClient::init_time()
+//{
+//        timer = new QTimer(this);
+//        QObject::connect(timer,SIGNAL(timeout()),this, SLOT(kirim()));
+//        timer->start(50);
+//}
+
+

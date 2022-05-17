@@ -1,4 +1,5 @@
 #include "client.h"
+#include "setting.h"
 
 QT_USE_NAMESPACE
 
@@ -14,13 +15,18 @@ EchoClient::EchoClient(const QUrl &url, bool debug, QObject *parent) :
 void EchoClient::onConnected()
 {
     qDebug() << "WebSocket connected";
-    connect(&m_webSocket, &QWebSocket::textMessageReceived,this, &EchoClient::onTextMessageReceived);
+    connect(&m_webSocket, &QWebSocket::binaryMessageReceived,this, &EchoClient::onTextMessageReceived);
     m_webSocket.sendTextMessage(QStringLiteral("aktif bro"));
 }
 
-void EchoClient::onTextMessageReceived(QString message)
+void EchoClient::onTextMessageReceived(QByteArray message)
 {
-    qDebug() << "Pesan Diterima: " << message;
+    qDebug() << message;
+//    message.resize(m_webSocket.readBufferSize());
+//    p_req2 = (struct tt_req2 *) message.data();
+//    p_data = (float *) p_req2->buf;
+//    i_kanal = p_req2->cur_kanal;
+//    qDebug() << "service : " << i_kanal;
     //m_webSocket.close();
 }
 

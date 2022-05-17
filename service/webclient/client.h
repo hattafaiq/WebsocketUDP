@@ -28,6 +28,7 @@ private:
     QDate date;
     QString dateTimeText;
     QString time_text;
+    int count;
 };
 
 #endif // CLIENT_H
