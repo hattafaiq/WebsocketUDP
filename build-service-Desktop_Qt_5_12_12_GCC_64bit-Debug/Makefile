@@ -231,6 +231,7 @@ DIST          = ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_pre.p
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf \
+		../service/.qmake.stash \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf \
@@ -436,6 +437,7 @@ Makefile: ../service/service.pro ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/li
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf \
@@ -629,6 +631,7 @@ Makefile: ../service/service.pro ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/li
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/default_pre.prf:
@@ -804,6 +807,7 @@ moc_data.cpp: ../service/data.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWebSockets/QWebSocketServer \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWebSockets/qwebsocketserver.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostAddress \
+		../service/setting.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
 	/home/fh/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/fh/Documents/DBE/bismillah/build-service-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/fh/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/fh/Documents/DBE/bismillah/service -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtWebSockets -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/fh/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../service/data.h -o moc_data.cpp
@@ -1039,7 +1043,8 @@ main.o: ../service/main.cpp ../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDate \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWebSockets/QWebSocketServer \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWebSockets/qwebsocketserver.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostAddress
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostAddress \
+		../service/setting.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../service/main.cpp
 
 moc_data.o: moc_data.cpp 

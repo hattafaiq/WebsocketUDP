@@ -39,7 +39,13 @@ struct tt_req2 {
 };
 
 struct data0{
-    float data_y_voltage;
+    int sender;
+    int jumlah_paket;
+    float data_kirim;
+};
+
+struct data1{
+    float data_kirim1[2560];
 };
 
 

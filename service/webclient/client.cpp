@@ -51,13 +51,21 @@ void EchoClient::onTextMessageReceived(QByteArray message)
 //    p_req2 = (struct tt_req2 *) message.data();
 //    p_data = (float *) p_req2->buf;
 //    i_kanal = p_req2->cur_kanal;
-    for(int i=0; i<256; i++){
-    char* terima = message.data();
+
+
+
+    qDebug()<<message;
+
+//    for(int i=0; i<256; i++){
+//    char* terima = message.data();
+//    qDebug()<< terima[i];
+//    }
+
+
     ////qDebug() << "Pesan Diterima: " << message << time_text;
     //qDebug() << "client: " << i_kanal << time_text; //<< " " //<< count;
     //HostAddress ipv4(sender.toIPv4Address());
-            qDebug()<< terima[i];
-    }
+
     //qDebug() << "client: " << ciliwung << " " << i_kanal;
 //lemot kalau print data secara detile bisajadi karena antrian yang menumpuk
 //    int i;

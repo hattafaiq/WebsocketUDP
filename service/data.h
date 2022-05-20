@@ -65,7 +65,10 @@ private:
 //  float data_y_voltage2[BESAR_PAKET_F];//256 data
 //  float data_y_voltage3[BESAR_PAKET_F];//256 data
 //  float data_y_voltage4[BESAR_PAKET_F];//256 data
-
+    float data10paket_1[2560];
+    /////
+    float *masuk[2560];
+    //QByteArray *siapkirim[2560];
     //
     //    char head[10];
     //    unsigned short sps;//KUKU
