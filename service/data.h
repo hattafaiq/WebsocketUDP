@@ -40,6 +40,10 @@ private:
     int counterCH2;
     int counterCH3;
     int counterCH4;
+    int counterCH5;
+    int counterCH6;
+    int counterCH7;
+    int counterCH8;
     //timer
     QTimer *timer;
     QTimer *timera;
@@ -62,10 +66,21 @@ private:
     int tim_count;
     // inisial data
     float data_y_voltage1[BESAR_PAKET_F];//256 data
-//  float data_y_voltage2[BESAR_PAKET_F];//256 data
-//  float data_y_voltage3[BESAR_PAKET_F];//256 data
-//  float data_y_voltage4[BESAR_PAKET_F];//256 data
+    float data_y_voltage2[BESAR_PAKET_F];//256 data
+    float data_y_voltage3[BESAR_PAKET_F];//256 data
+    float data_y_voltage4[BESAR_PAKET_F];//256 data
+    float data_y_voltage5[BESAR_PAKET_F];//256 data
+    float data_y_voltage6[BESAR_PAKET_F];//256 data
+    float data_y_voltage7[BESAR_PAKET_F];//256 data
+    float data_y_voltage8[BESAR_PAKET_F];//256 data
     float data10paket_1[2560];
+    float data10paket_2[2560];
+    float data10paket_3[2560];
+    float data10paket_4[2560];
+    float data10paket_5[2560];
+    float data10paket_6[2560];
+    float data10paket_7[2560];
+    float data10paket_8[2560];
     /////
     float *masuk[2560];
     //QByteArray *siapkirim[2560];
