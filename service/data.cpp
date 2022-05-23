@@ -182,7 +182,7 @@ void data::readyReady()
 
 void data::datamanagement()
 {
-        QByteArray byteArray(reinterpret_cast<const char*>(&data10paket_1), 2560 * sizeof(float));
+       QByteArray byteArray(reinterpret_cast<const char*>(&data10paket_1), 2560 * sizeof(float));
         qDebug()<<"oke terima ke ";
         float outValue[2560];
         // Copy the data from the byte array into the double
@@ -191,17 +191,18 @@ void data::datamanagement()
         {
         qDebug("%f", outValue[i]);
         }
-}
+
+
     //timera->stop();
    // qDebug()<<byteArray;
 //    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //    //        //kirim data ke cient//                                       //
-//            QWebSocket *pSender = qobject_cast<QWebSocket *>(sender());   //
-//            Q_FOREACH (QWebSocket *pClient, m_clients)                    //
-//            {                                                             //
-//                pClient->sendBinaryMessage(byteArray);
-//                qDebug()<<"kirim ke client " <<byteArray;
-//            }                                                             //
+            QWebSocket *pSender = qobject_cast<QWebSocket *>(sender());   //
+            Q_FOREACH (QWebSocket *pClient, m_clients)                    //
+            {                                                             //
+                pClient->sendBinaryMessage(byteArray);
+               // qDebug()<<"kirim ke client " <<byteArray;
+            }                                                             //
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //            for(int i=0; i<2560; i++){
 //                masuk1 = (struct data1 *) dataterima.data();
@@ -218,7 +219,7 @@ void data::datamanagement()
 
 //                    qDebug()<<"kirim tanpa koneksi";//
 
-
+}
 void data::refresh_plot()
 {
     req_UDP();

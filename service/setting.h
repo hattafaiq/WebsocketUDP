@@ -39,7 +39,7 @@ struct tt_req2 {
 };
 
 struct data0{
-    int sender;
+    //int sender;
     int jumlah_paket;
     float data_kirim;
 };

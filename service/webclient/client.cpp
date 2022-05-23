@@ -53,8 +53,13 @@ void EchoClient::onTextMessageReceived(QByteArray message)
 //    i_kanal = p_req2->cur_kanal;
 
 
-
-    qDebug()<<message;
+    float outValue[2560];
+    // Copy the data from the byte array into the double
+    memcpy(&outValue, message.data(), 2560 * sizeof(float));
+    for(int i=0; i<2560; i++)
+    {
+    qDebug("%f", outValue[i]);
+    }
 
 //    for(int i=0; i<256; i++){
 //    char* terima = message.data();
