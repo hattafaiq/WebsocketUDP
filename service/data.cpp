@@ -56,6 +56,7 @@ void data::readyReady()
     struct tt_req2 *p_req2;
     float *p_data;
     int i_kanal;
+    unsigned short spsX;
    // int cnt_ch[JUM_PLOT];
    // float *data_send[JUM_PLOT];
     int no_module;
@@ -96,129 +97,102 @@ void data::readyReady()
          p_req2 = (struct tt_req2 *) datagram.data();
          p_data = (float *) p_req2->buf;
          i_kanal = p_req2->cur_kanal;
+         spsX = p_req2->sps;
 
         //QByteArray paketkirim;
         //float data10paket_1[2560];
-
-         if(no_module==0) //ip pertama
-         {
-             //counterCH1++;// ikut 1 paket
-             if(i_kanal==0)//kanal 1
+        //qDebug()<<"sps :"<<spsX;
+             if(no_module==0) //ip pertama
              {
-                 counterCH1++;
-                 if (counterCH1<11)
+                 //counterCH1++;// ikut 1 paket
+                 if(i_kanal==0)//kanal 1
                  {
+                     counterCH1++;
+                     if (counterCH1<11)
+                     {
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-                //mengirim 1o paket kanal 1
-                     int i;
-                     for(i=0; i<256; i++)
-                         {
-                            // data_y_voltage1[i]=p_data[i%256]; //mengirim 1 paket
-                            data10paket_1[(counterCH1-1)*256+i]=p_data[i%256];//tracking data dari 0-2560 per paket data sebanyak 256
-                         }
-                            // qDebug()<<"oke masuk ke " << counterCH1 << "CH1" << "-jumlah data " << (counterCH1-1)*256+i;
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+                    //mengirim 1o paket kanal 1
+                         int i;
+                         for(i=0; i<256; i++)
+                             {
+                                // data_y_voltage1[i]=p_data[i%256]; //mengirim 1 paket
+                                data10paket_1[(counterCH1-1)*256+i]=p_data[i%256];//tracking data dari 0-2560 per paket data sebanyak 256
+                             }
+                                // qDebug()<<"oke masuk ke " << counterCH1 << "CH1" << "-jumlah data " << (counterCH1-1)*256+i;
 
-                             //double value = 3.14159275;
-                             // Encode the value into the byte array
+                                 //double value = 3.14159275;
+                                 // Encode the value into the byte array
 
 
-    //////////////////////--------------------------------------------------------------/////////////
-    /////////////////////---------------------------------------------------------------/////////////
+        //////////////////////--------------------------------------------------------------/////////////
+        /////////////////////---------------------------------------------------------------/////////////
+                     }
                  }
+    //             struct data1 bisa;
+    //             *masuk = bisa.data_kirim1;
+    //             memcpy(&masuk, &data10paket_1, sizeof (data10paket_1));
+    //             struct data11 *bisaa;
+    //             float *ap_data;
+    //             bisaa = (struct data11 *) masuk;
+    //             ap_data = (float *) bisaa;
+
+    //--------------------------------------------------------------------------------------------------//
+    //             else if(i_kanal==1){ //kanal 2
+    //             counterCH2++;
+    //             for(int i=0; i<256; i++)
+    //                 {
+    //                     data_y_voltage2[i]=p_data[i%256];
+    //                     //cnt_ch[i_kanal]++;
+    //                     //       data_send[i_kanal][cnt_ch[i_kanal]] = p_data[i];
+    //                     qDebug()<<data_y_voltage2[i];
+    //                 }
+    //             qDebug()<<"oke masuk ----------- CH2 " << counterCH2 << " data";
+    //             }
+    //             else if(i_kanal==2){ //kanal 3
+    //             counterCH3++;
+    //             for(int i=0; i<256; i++)
+    //                 {
+    //                     data_y_voltage3[i]=p_data[i%256];
+    //                     //cnt_ch[i_kanal]++;
+    //                     //       data_send[i_kanal][cnt_ch[i_kanal]] = p_data[i];
+    //                     qDebug()<<data_y_voltage3[i];
+    //                 }
+    //             qDebug()<<"oke masuk ----------- CH3 " << counterCH3 << " data";
+    //             }
+    //             else if(i_kanal==3){ //kanal 4
+    //             counterCH4++;
+    //             for(int i=0; i<256; i++)
+    //                 {
+    //                     data_y_voltage4[i]=p_data[i%256];
+    //                     //cnt_ch[i_kanal]++;
+    //                     //       data_send[i_kanal][cnt_ch[i_kanal]] = p_data[i];
+    //                     qDebug()<<data_y_voltage4[i];
+    //                 }
+    //             qDebug()<<"oke masuk ----------- CH4 " << counterCH4 << " data";
+    //             }
+    //------------------------------------------------------------------------------------------------------//
+
+
              }
-//             struct data1 bisa;
-//             *masuk = bisa.data_kirim1;
-//             memcpy(&masuk, &data10paket_1, sizeof (data10paket_1));
-//             struct data11 *bisaa;
-//             float *ap_data;
-//             bisaa = (struct data11 *) masuk;
-//             ap_data = (float *) bisaa;
-
-//--------------------------------------------------------------------------------------------------//
-//             else if(i_kanal==1){ //kanal 2
-//             counterCH2++;
-//             for(int i=0; i<256; i++)
-//                 {
-//                     data_y_voltage2[i]=p_data[i%256];
-//                     //cnt_ch[i_kanal]++;
-//                     //       data_send[i_kanal][cnt_ch[i_kanal]] = p_data[i];
-//                     qDebug()<<data_y_voltage2[i];
-//                 }
-//             qDebug()<<"oke masuk ----------- CH2 " << counterCH2 << " data";
-//             }
-//             else if(i_kanal==2){ //kanal 3
-//             counterCH3++;
-//             for(int i=0; i<256; i++)
-//                 {
-//                     data_y_voltage3[i]=p_data[i%256];
-//                     //cnt_ch[i_kanal]++;
-//                     //       data_send[i_kanal][cnt_ch[i_kanal]] = p_data[i];
-//                     qDebug()<<data_y_voltage3[i];
-//                 }
-//             qDebug()<<"oke masuk ----------- CH3 " << counterCH3 << " data";
-//             }
-//             else if(i_kanal==3){ //kanal 4
-//             counterCH4++;
-//             for(int i=0; i<256; i++)
-//                 {
-//                     data_y_voltage4[i]=p_data[i%256];
-//                     //cnt_ch[i_kanal]++;
-//                     //       data_send[i_kanal][cnt_ch[i_kanal]] = p_data[i];
-//                     qDebug()<<data_y_voltage4[i];
-//                 }
-//             qDebug()<<"oke masuk ----------- CH4 " << counterCH4 << " data";
-//             }
-//------------------------------------------------------------------------------------------------------//
-
-
-         }
-         qDebug()<<"stop ";
-         timer->stop();
-
-
-
-    //////////////////////kalau 1 IP 4 kanal sampai sini)
-
-
 
     }
-    //timer->stop();// biar timernya sekali aja requestnya
-    qDebug()<<"oke masuk ke ";
-    qDebug()<<"oke masuk ke ";
-    qDebug()<<"oke masuk ke ";
-    qDebug()<<"oke masuk ke ";
-    qDebug()<<"oke masuk ke ";
-    qDebug()<<"oke masuk ke ";
-    qDebug()<<"oke masuk ke ";
-    qDebug()<<"oke masuk ke ";
-    qDebug()<<"oke masuk ke ";
-    qDebug()<<"oke masuk ke ";
-    for(int i=0; i<2560; i++){
-    qDebug()<<data10paket_1[i];//<<"\n";
-    }
-    timer->stop();
+
 }
 
 void data::datamanagement()
 {
-    QByteArray byteArray(reinterpret_cast<const char*>(&data10paket_1), 2560 * sizeof(float));
-
-    qDebug()<<"oke terima ke ";
-    qDebug()<<"oke terima ke ";
-    qDebug()<<"oke terima ke ";
-    qDebug()<<"oke terima ke ";
-    qDebug()<<"oke terima ke ";
-    qDebug()<<"oke terima ke ";
-    qDebug()<<"oke terima ke ";
-    float outValue[2560];
-    // Copy the data from the byte array into the double
-    memcpy(&outValue, byteArray.data(), 2560 * sizeof(float));
-    for(int i=0; i<2560; i++){
-    qDebug("%f", outValue[i]);
-    }
-
-    timera->stop();
+        QByteArray byteArray(reinterpret_cast<const char*>(&data10paket_1), 2560 * sizeof(float));
+        qDebug()<<"oke terima ke ";
+        float outValue[2560];
+        // Copy the data from the byte array into the double
+        memcpy(&outValue, byteArray.data(), 2560 * sizeof(float));
+        for(int i=0; i<2560; i++)
+        {
+        qDebug("%f", outValue[i]);
+        }
+}
+    //timera->stop();
    // qDebug()<<byteArray;
 //    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //    //        //kirim data ke cient//                                       //
@@ -244,7 +218,6 @@ void data::datamanagement()
 
 //                    qDebug()<<"kirim tanpa koneksi";//
 
-}
 
 void data::refresh_plot()
 {
