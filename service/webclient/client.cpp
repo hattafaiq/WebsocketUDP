@@ -42,44 +42,15 @@ void EchoClient::onConnected()
 
 void EchoClient::onTextMessageReceived(QByteArray message)
 {
-    //count++;
-    //quint16 senderPort;
-//    QString ciliwung = m_webSocket.peerAddress().toString();
-//    struct tt_req2 *p_req2;
-//    float *p_data;
-//    int i_kanal;
-//    p_req2 = (struct tt_req2 *) message.data();
-//    p_data = (float *) p_req2->buf;
-//    i_kanal = p_req2->cur_kanal;
-
-
     float outValue[2560];
     // Copy the data from the byte array into the double
     memcpy(&outValue, message.data(), 2560 * sizeof(float));
     for(int i=0; i<2560; i++)
     {
     qDebug("%f", outValue[i]);
+    //qDebug()<<"terima data";
     }
-
-//    for(int i=0; i<256; i++){
-//    char* terima = message.data();
-//    qDebug()<< terima[i];
-//    }
-
-
-    ////qDebug() << "Pesan Diterima: " << message << time_text;
-    //qDebug() << "client: " << i_kanal << time_text; //<< " " //<< count;
-    //HostAddress ipv4(sender.toIPv4Address());
-
-    //qDebug() << "client: " << ciliwung << " " << i_kanal;
-//lemot kalau print data secara detile bisajadi karena antrian yang menumpuk
-//    int i;
-//    for (i=0; i<255; i++)
-//    {
-//        qDebug() << "client: " << i_kanal << p_data[i] << time_text;
-//    }
-    //m_webSocket.close();
-
+    qDebug()<<"terima data----------------------------------------**//";
 }
 
 

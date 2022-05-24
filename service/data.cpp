@@ -9,9 +9,9 @@ data::data(QObject *parent) : QObject(parent)
     socket->bind(QHostAddress::Any, 5008);
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyReady()));
     //INIT_websocket
-    m_pWebSocketServer = new QWebSocketServer(QStringLiteral("Chat Server"),QWebSocketServer::NonSecureMode,this);
-    m_pWebSocketServer->listen(QHostAddress::Any, 1234);
-    connect(m_pWebSocketServer, SIGNAL(newConnection()),this, SLOT(onNewConnection()));
+    m_pWebSocketServer1 = new QWebSocketServer(QStringLiteral("Chat Server"),QWebSocketServer::NonSecureMode,this);
+    m_pWebSocketServer1->listen(QHostAddress::Any, 1234);
+    connect(m_pWebSocketServer1, SIGNAL(newConnection()),this, SLOT(onNewConnection()));
     //INIT_waktu
     jam = new QTimer(this);
     connect(jam, SIGNAL(timeout()),this, SLOT(showTime()));
@@ -24,11 +24,11 @@ data::data(QObject *parent) : QObject(parent)
 void data::init_time()
 {
     timer = new QTimer(this);
-    timera = new QTimer(this);
+    //timera = new QTimer(this);
     QObject::connect(timer,SIGNAL(timeout()),this, SLOT(refresh_plot()));
-    QObject::connect(timera,SIGNAL(timeout()),this, SLOT(datamanagement()));
-    timer->start(1000);
-    timera->start(2000);
+    //QObject::connect(timera,SIGNAL(timeout()),this, SLOT(datamanagement()));
+    timer->start(2200);// 3000 terjadi blong 177 data
+   // timera->start(2000);
 
 }
 
@@ -117,7 +117,16 @@ void data::readyReady()
                              {
                                 // data_y_voltage1[i]=p_data[i%256]; //mengirim 1 paket
                                 data10paket_1[(counterCH1-1)*256+i]=p_data[i%256];//tracking data dari 0-2560 per paket data sebanyak 256
+                                //qDebug()<<data10paket_1[(counterCH1-1)*256+i];
                              }
+                        if(counterCH1==10)
+                        {   for(int a=0; a=2560; a++)
+                            {
+                                qDebug()<<data10paket_1[a];
+                                counterCH1=0;
+                                sendDataClient1();
+                            }
+                        }
                                 // qDebug()<<"oke masuk ke " << counterCH1 << "CH1" << "-jumlah data " << (counterCH1-1)*256+i;
 
                      }
@@ -206,9 +215,14 @@ void data::readyReady()
                              {
                                 // data_y_voltage1[i]=p_data[i%256]; //mengirim 1 paket
                                 data10paket_5[(counterCH5-1)*256+i]=p_data[i%256];//tracking data dari 0-2560 per paket data sebanyak 256
+                                qDebug()<<data10paket_5[(counterCH5-1)*256+i];
                              }
                                 // qDebug()<<"oke masuk ke " << counterCH1 << "CH1" << "-jumlah data " << (counterCH1-1)*256+i;
-
+                         if(counterCH5==10)
+                         {
+                                 counterCH5=0;
+                                 sendDataClient1();
+                         }
                      }
                  }//kanal 5
 
@@ -276,43 +290,50 @@ void data::readyReady()
 
              }//ip KEDUA
 
+        //datamanagement();
+
     }// while
 
 }//void
 
+void data::sendDataClient1()
+{
+    QByteArray byteArray1(reinterpret_cast<const char*>(&data10paket_1), 2560 * sizeof(float));
+    QWebSocket *pSender1 = qobject_cast<QWebSocket *>(sender());
+    Q_FOREACH (QWebSocket *pClient1, m_clients1)
+    {
+        pClient1->sendBinaryMessage(byteArray1);
+//        for(int a=0; a=2560; a++)
+//           {
+//               qDebug()<<data10paket_5[a];
+//            }
+    }
+
+}
+
 void data::datamanagement()
 {
-    //konfersi data paket
-    QByteArray byteArray1(reinterpret_cast<const char*>(&data10paket_1), 2560 * sizeof(float));
-    QByteArray byteArray2(reinterpret_cast<const char*>(&data10paket_2), 2560 * sizeof(float));
-    QByteArray byteArray3(reinterpret_cast<const char*>(&data10paket_3), 2560 * sizeof(float));
-    QByteArray byteArray4(reinterpret_cast<const char*>(&data10paket_4), 2560 * sizeof(float));
-    QByteArray byteArray5(reinterpret_cast<const char*>(&data10paket_5), 2560 * sizeof(float));
-    QByteArray byteArray6(reinterpret_cast<const char*>(&data10paket_6), 2560 * sizeof(float));
-    QByteArray byteArray7(reinterpret_cast<const char*>(&data10paket_7), 2560 * sizeof(float));
-    QByteArray byteArray8(reinterpret_cast<const char*>(&data10paket_8), 2560 * sizeof(float));
+    //QByteArray byteArray1(reinterpret_cast<const char*>(&data10paket_1), 2560 * sizeof(float));
+//    QByteArray byteArray2(reinterpret_cast<const char*>(&data10paket_2), 2560 * sizeof(float));
+//    QByteArray byteArray3(reinterpret_cast<const char*>(&data10paket_3), 2560 * sizeof(float));
+//    QByteArray byteArray4(reinterpret_cast<const char*>(&data10paket_4), 2560 * sizeof(float));
+//    QByteArray byteArray5(reinterpret_cast<const char*>(&data10paket_5), 2560 * sizeof(float));
+//    QByteArray byteArray6(reinterpret_cast<const char*>(&data10paket_6), 2560 * sizeof(float));
+//    QByteArray byteArray7(reinterpret_cast<const char*>(&data10paket_7), 2560 * sizeof(float));
+//    QByteArray byteArray8(reinterpret_cast<const char*>(&data10paket_8), 2560 * sizeof(float));
 
+//    QWebSocket *pSender1 = qobject_cast<QWebSocket *>(sender());
+//    Q_FOREACH (QWebSocket *pClient1, m_clients1)
+//    {
+//        if(counterCH1==10)
+//            {
+//                counterCH1=0;
+//                pClient1->sendBinaryMessage(byteArray1);
+//            }
+//       // qDebug()<<"kirim ke client " <<byteArray;
+//    }
 
-//        float outValue[2560];
-//        // Copy the data from the byte array into the double
-//        memcpy(&outValue, byteArray.data(), 2560 * sizeof(float));
-//        for(int i=0; i<2560; i++)
-//        {
-//        qDebug("%f", outValue[i]);
-//        }
-
-            qDebug()<<"oke terima kanal 1 ip pertama lalu kirim ";
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-  //        //kirim data ke cient//
-            QWebSocket *pSender = qobject_cast<QWebSocket *>(sender());
-            Q_FOREACH (QWebSocket *pClient, m_clients)
-            {
-                pClient->sendBinaryMessage(byteArray1);
-               // qDebug()<<"kirim ke client " <<byteArray;
-            }
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-
+    //byteArray8[];
 }
 
 void data::refresh_plot()
@@ -324,49 +345,32 @@ void data::refresh_plot()
 
 data::~data()
 {
-    m_pWebSocketServer->close();
-    qDeleteAll(m_clients.begin(), m_clients.end());
+    m_pWebSocketServer1->close();
+    qDeleteAll(m_clients1.begin(), m_clients1.end());
 }
 
 void data::onNewConnection()
 {
     //qDebug("%s() == %d",__FUNCTION__,tim_count);
-    QWebSocket *pSocket = m_pWebSocketServer->nextPendingConnection();
-    connect(pSocket, SIGNAL(textMessageReceived()), this, SLOT(processMessage()));
-    connect(pSocket, SIGNAL(disconnected()), this, SLOT(socketDisconnected()));
-    m_clients << pSocket;
+    QWebSocket *pSocket1 = m_pWebSocketServer1->nextPendingConnection();
+    connect(pSocket1, SIGNAL(binaryMessageReceived()), this, SLOT(processMessage()));
+    connect(pSocket1, SIGNAL(disconnected()), this, SLOT(socketDisconnected()));
+    m_clients1 << pSocket1;
 }
 
 void data::processMessage()//QByteArray message)
 {
-    //qDebug() << "server: " << sendera << " " << i_kanal;
-//    QWebSocket *pSender = qobject_cast<QWebSocket *>(sender());
-//    Q_FOREACH (QWebSocket *pClient, m_clients)
-//    {
-//        pClient->sendBinaryMessage(datagram);
-//    }
-//    //pengecekan koneksi atau balasan dari client
-//    //qDebug() << "dari client: " << message;
-//    QWebSocket *pSender = qobject_cast<QWebSocket *>(sender());
-//    Q_FOREACH (QWebSocket *cClient, m_clients)
-//    {       QString qs = "masuk bro";
-//            message += qs;
-//            //if(cClient->sendTextMessage(message))
-//            if(cClient->sendBinaryMessage(message))
-//            {
-//            qDebug() << "balasan: " << message;
-//            }
-//     }
+
 }
 
 void data::socketDisconnected()
 {
-    QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
-    if (pClient)
+    QWebSocket *pClient1 = qobject_cast<QWebSocket *>(sender());
+    if (pClient1)
     {
-        m_clients.removeAll(pClient);
-        pClient->deleteLater();
+        m_clients1.removeAll(pClient1);
+        pClient1->deleteLater();
     }
 }
 
-///emit untuk mentriger counter berdasarkan variabel didalam fungsi bisa atau fungsi;
+//mencoba data 1 ip buffer apakah bagus atau tidak

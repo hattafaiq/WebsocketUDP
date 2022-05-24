@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_data_t {
-    QByteArrayData data[10];
-    char stringdata0[114];
+    QByteArrayData data[11];
+    char stringdata0[126];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,15 +36,16 @@ QT_MOC_LITERAL(1, 5, 10), // "readyReady"
 QT_MOC_LITERAL(2, 16, 0), // ""
 QT_MOC_LITERAL(3, 17, 9), // "init_time"
 QT_MOC_LITERAL(4, 27, 12), // "refresh_plot"
-QT_MOC_LITERAL(5, 40, 15), // "onNewConnection"
-QT_MOC_LITERAL(6, 56, 14), // "processMessage"
-QT_MOC_LITERAL(7, 71, 18), // "socketDisconnected"
-QT_MOC_LITERAL(8, 90, 8), // "showTime"
-QT_MOC_LITERAL(9, 99, 14) // "datamanagement"
+QT_MOC_LITERAL(5, 40, 11), // "init_socket"
+QT_MOC_LITERAL(6, 52, 15), // "onNewConnection"
+QT_MOC_LITERAL(7, 68, 14), // "processMessage"
+QT_MOC_LITERAL(8, 83, 18), // "socketDisconnected"
+QT_MOC_LITERAL(9, 102, 8), // "showTime"
+QT_MOC_LITERAL(10, 111, 14) // "datamanagement"
 
     },
     "data\0readyReady\0\0init_time\0refresh_plot\0"
-    "onNewConnection\0processMessage\0"
+    "init_socket\0onNewConnection\0processMessage\0"
     "socketDisconnected\0showTime\0datamanagement"
 };
 #undef QT_MOC_LITERAL
@@ -55,7 +56,7 @@ static const uint qt_meta_data_data[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -63,16 +64,18 @@ static const uint qt_meta_data_data[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   54,    2, 0x0a /* Public */,
-       3,    0,   55,    2, 0x0a /* Public */,
-       4,    0,   56,    2, 0x0a /* Public */,
-       5,    0,   57,    2, 0x08 /* Private */,
-       6,    0,   58,    2, 0x08 /* Private */,
-       7,    0,   59,    2, 0x08 /* Private */,
-       8,    0,   60,    2, 0x08 /* Private */,
-       9,    0,   61,    2, 0x08 /* Private */,
+       1,    0,   59,    2, 0x0a /* Public */,
+       3,    0,   60,    2, 0x0a /* Public */,
+       4,    0,   61,    2, 0x0a /* Public */,
+       5,    0,   62,    2, 0x0a /* Public */,
+       6,    0,   63,    2, 0x08 /* Private */,
+       7,    0,   64,    2, 0x08 /* Private */,
+       8,    0,   65,    2, 0x08 /* Private */,
+       9,    0,   66,    2, 0x08 /* Private */,
+      10,    0,   67,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -94,11 +97,12 @@ void data::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 0: _t->readyReady(); break;
         case 1: _t->init_time(); break;
         case 2: _t->refresh_plot(); break;
-        case 3: _t->onNewConnection(); break;
-        case 4: _t->processMessage(); break;
-        case 5: _t->socketDisconnected(); break;
-        case 6: _t->showTime(); break;
-        case 7: _t->datamanagement(); break;
+        case 3: _t->init_socket(); break;
+        case 4: _t->onNewConnection(); break;
+        case 5: _t->processMessage(); break;
+        case 6: _t->socketDisconnected(); break;
+        case 7: _t->showTime(); break;
+        case 8: _t->datamanagement(); break;
         default: ;
         }
     }
@@ -134,13 +138,13 @@ int data::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

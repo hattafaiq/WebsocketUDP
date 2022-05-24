@@ -27,13 +27,15 @@ public slots:
     void readyReady(); //(QByteArray datagram);//data tidak mau masuk
     void init_time();
     void refresh_plot();
+    //void init_socket();
 
 private slots:
     void onNewConnection();
-    void processMessage();//QByteArray message);
+    void processMessage();
     void socketDisconnected();
     void showTime();
     void datamanagement();
+    void sendDataClient1();
 
 private:
     int counterCH1;
@@ -44,12 +46,19 @@ private:
     int counterCH6;
     int counterCH7;
     int counterCH8;
+    ///
     //timer
     QTimer *timer;
     QTimer *timera;
     //websocket
-    QWebSocketServer *m_pWebSocketServer;
-    QList<QWebSocket *> m_clients;
+    QWebSocketServer *m_pWebSocketServer1;
+    QWebSocketServer *m_pWebSocketServer2;
+    QWebSocketServer *m_pWebSocketServer3;
+    QWebSocketServer *m_pWebSocketServer4;
+    QList<QWebSocket *> m_clients1;
+    QList<QWebSocket *> m_clients2;
+    QList<QWebSocket *> m_clients3;
+    QList<QWebSocket *> m_clients4;
     QString *datas;
     //date
     QTimer *jam;
@@ -82,14 +91,7 @@ private:
     float data10paket_7[2560];
     float data10paket_8[2560];
     /////
-    float *masuk[2560];
-    //QByteArray *siapkirim[2560];
-    //
-    //    char head[10];
-    //    unsigned short sps;//KUKU
-    //    char cur_kanal;
-    //    int kanal_enable;       /* jumlah kanal aktif */
-    //    int request_sample;
+
 
 
 };
